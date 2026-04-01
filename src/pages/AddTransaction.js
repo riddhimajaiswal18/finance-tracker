@@ -39,23 +39,25 @@ export default function AddTransaction() {
     useEffect(() => {
         if (editTransaction) {
             try {
-                // Safely handle date conversion for the HTML5 input
-                const parsedDate = new Date(editTransaction.date);
+                const parsedDate = new Date(editTransaction.date + 'T00:00:00');
                 const dateValue = !isNaN(parsedDate.getTime())
-                    ? parsedDate.toISOString().split('T')[0]
-                    : new Date().toISOString().split('T')[0];
+                    ? parsedDate.toLocaleDateString('en-CA')
+                    : new Date().toLocaleDateString('en-CA');
 
                 reset({ ...editTransaction, date: dateValue });
             } catch (e) {
-                reset({ ...editTransaction, date: new Date().toISOString().split('T')[0] });
+                reset({ ...editTransaction, date: new Date().toLocaleDateString('en-CA') });
             }
         }
     }, [editTransaction, reset]);
 
     const onSubmit = (data) => {
-        // Ensure we save a valid date string
-        const validDate = data.date instanceof Date ? data.date : new Date(data.date);
-        const formattedData = { ...data, date: validDate.toISOString().split('T')[0] };
+        const parsedDate = new Date(data.date);
+        const dateStr = !isNaN(parsedDate.getTime())
+            ? parsedDate.toLocaleDateString('en-CA')
+            : new Date().toLocaleDateString('en-CA');
+
+        const formattedData = { ...data, date: dateStr };
 
         if (editTransaction) {
             updateTransaction({ ...formattedData, id: editTransaction.id });

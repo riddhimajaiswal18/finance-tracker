@@ -20,7 +20,7 @@ export default function Transactions() {
             filterType === "all" ? true : t.type === filterType;
 
         return matchesSearch && matchesType;
-    }).sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date descending
+    }).sort((a, b) => new Date(b.date) - new Date(a.date));
 
     const handleEdit = (transaction) => {
         setEditTransaction(transaction);

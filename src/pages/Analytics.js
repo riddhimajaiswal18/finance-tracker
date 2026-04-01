@@ -21,7 +21,6 @@ export default function Analytics() {
     const { transactions } = useContext(FinanceContext);
     const COLORS = ["#6366f1", "#10b981", "#f59e0b", "#ef4444"];
 
-    // 1. Comparison Data (Income vs Expense)
     const totalIncome = transactions
         .filter((t) => t.type === "income")
         .reduce((acc, t) => acc + Number(t.amount), 0);
@@ -33,7 +32,6 @@ export default function Analytics() {
         { name: "Expense", value: totalExpense },
     ];
 
-    // 2. Category Distribution Data (Expense by Category)
     const expenseTransactions = transactions.filter((t) => t.type === "expense");
     const categories = [...new Set(expenseTransactions.map((t) => t.category))];
     const categoryData = categories.map((category) => {
@@ -43,15 +41,13 @@ export default function Analytics() {
         return { name: category, value: amount };
     });
 
-    // 3. Key Metrics
     const netBalance = totalIncome - totalExpense;
     const topCategory = categoryData.length > 0
         ? categoryData.reduce((prev, current) => (prev.value > current.value ? prev : current))
         : { name: "N/A", value: 0 };
 
-    // 4. Monthly Trend Data (Line Chart)
     const trendMap = transactions.reduce((acc, t) => {
-        const month = t.date.substring(0, 7); // YYYY-MM
+        const month = t.date.substring(0, 7);
         if (!acc[month]) {
             acc[month] = { name: month, income: 0, expense: 0 };
         }

@@ -3,13 +3,16 @@ import { createContext, useState, useEffect } from "react";
 export const FinanceContext = createContext();
 
 export const FinanceProvider = ({ children }) => {
-  // Load transactions from localStorage
   const [transactions, setTransactions] = useState(() => {
-    const saved = localStorage.getItem("transactions");
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem("transactions");
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      console.error("Failed to parse transactions", e);
+      return [];
+    }
   });
 
-  // Load budget from localStorage
   const [budget, setBudget] = useState(() => {
     const saved = localStorage.getItem("budget");
     return saved ? Number(saved) : 0;
@@ -17,12 +20,10 @@ export const FinanceProvider = ({ children }) => {
 
   const [editTransaction, setEditTransaction] = useState(null);
 
-  // Save transactions whenever they change
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
 
-  // Save budget whenever it changes
   useEffect(() => {
     localStorage.setItem("budget", budget);
   }, [budget]);

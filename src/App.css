@@ -4,14 +4,10 @@
   --text-main: #1e293b;
   --text-secondary: #64748b;
   --primary: #6366f1;
-  /* Indigo */
   --primary-glow: rgba(99, 102, 241, 0.3);
   --success: #10b981;
-  /* Emerald */
   --danger: #ef4444;
-  /* Red */
   --accent: #8b5cf6;
-  /* Violet */
   --border: #e2e8f0;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.5);
@@ -22,13 +18,9 @@
 
 [data-theme="dark"] {
   --bg-main: #0f172a;
-  /* Slate 900 */
   --bg-card: #1e293b;
-  /* Slate 800 */
   --text-main: #f1f5f9;
-  /* Slate 100 */
   --text-secondary: #94a3b8;
-  /* Slate 400 */
   --primary: #818cf8;
   --primary-glow: rgba(129, 140, 248, 0.3);
   --success: #34d399;
@@ -56,7 +48,6 @@ body {
   padding: 2rem 1.5rem;
 }
 
-/* Modern Navigation */
 .navbar {
   display: flex;
   gap: 1.5rem;
@@ -119,7 +110,6 @@ h3 {
   font-weight: 600;
 }
 
-/* Cards */
 .card {
   background: var(--bg-card);
   border-radius: var(--radius);
@@ -134,7 +124,6 @@ h3 {
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
 }
 
-/* Dashboard Stats */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -183,7 +172,6 @@ h3 {
   box-shadow: 0 10px 20px -5px var(--primary-glow);
 }
 
-/* Forms */
 .form-card {
   max-width: 500px;
   margin: 0 auto;
@@ -231,7 +219,6 @@ textarea:focus {
   display: block;
 }
 
-/* Buttons */
 button {
   cursor: pointer;
   padding: 0.875rem 1.5rem;
@@ -282,7 +269,6 @@ button {
   color: white;
 }
 
-/* Transactions List */
 .filter-bar {
   display: flex;
   gap: 1rem;
@@ -355,7 +341,6 @@ button {
   vertical-align: middle;
 }
 
-/* Budget Progress */
 .budget-progress-container {
   background: var(--bg-main);
   border-radius: 999px;
@@ -371,7 +356,6 @@ button {
   transition: width 0.5s ease-out;
 }
 
-/* Analytics */
 .charts-container {
   display: flex;
   flex-wrap: wrap;
@@ -387,7 +371,6 @@ button {
   align-items: center;
 }
 
-/* Currency Converter */
 .converter-ui {
   margin-top: 1.5rem;
   text-align: center;
@@ -416,7 +399,6 @@ button {
   color: var(--text-main);
 }
 
-/* News Feed */
 .news-feed ul {
   list-style: none;
   padding: 0;

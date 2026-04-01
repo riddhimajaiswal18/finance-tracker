@@ -17,7 +17,6 @@ export default function Dashboard() {
 
     const format = (num) => num.toLocaleString("en-IN");
 
-    // Get the 3 most recent transactions
     const recentTransactions = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
 
     return (
